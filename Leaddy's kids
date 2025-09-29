@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaddy's Kids - Mode Enfant</title>
+    <style>
+        /* Variables CSS */
+        :root {
+            --primary-color: #ff6b9d;
+            --secondary-color: #5d9cec;
+            --accent-color: #ffcc00;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* En-tête */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--white);
+            padding: 15px 0;
+            box-shadow: var(--box-shadow);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            margin: 0 15px;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        .nav-item:hover {
+            background-color: var(--light-bg);
+        }
+
+        .nav-item.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Sections */
+        section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f0f0f0"/><circle cx="50" cy="50" r="40" fill="%23ffcc00" opacity="0.2"/></svg>');
+            background-size: cover;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Catégories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            width: 300px;
+            transition: var(--transition);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+
+        .category-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .category-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Produits */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 1.2rem;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .product-age {
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .product-category {
+            display: inline-block;
+            background-color: var(--light-bg);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Contact */
+        .contact-section {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-input, .form-textarea {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 107, 157, 0.2);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: #333;
+            color: var(--white);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .categories {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-item {
+                margin: 5px 0;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <div class="container">
+            <div class="logo">Leaddy's Kids</div>
+            <div class="tagline">Bienvenue chez Leaddy's kids ! 🌟️</div>
+            <p>Bonjour et bienvenue dans notre univers magique de mode enfantine ! Nous sommes ravis de vous accueillir dans notre boutique en ligne.</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-container">
+            <div class="nav-item active" data-section="home">Accueil</div>
+            <div class="nav-item" data-section="products">Tous les produits</div>
+            <div class="nav-item" data-section="girls">Filles</div>
+            <div class="nav-item" data-section="boys">Garçons</div>
+            <div class="nav-item" data-section="contact">Contact</div>
+        </div>
+    </nav>
+
+    <!-- Section Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Découvrez notre collection exclusive ! 🌟️</h1>
+            <p>Des vêtements pour enfants de toutes qualités, soigneusement sélectionnés pour le confort et le style de vos petits trésors.</p>
+            <a href="#" class="btn" id="view-products">Voir nos produits</a>
+        </div>
+    </section>
+
+    <!-- Section Catégories -->
+    <section id="home" class="section active-section">
+        <div class="container">
+            <h2 class="section-title">Nos Catégories</h2>
+            <div class="categories">
+                <div class="category-card">
+                    <div class="category-header">
+                        <h3>Vêtements Filles</h3>
+                    </div>
+                    <div class="category-body">
+                        <p>Robes, jupes, ensembles</p>
+                        <a href="#" class="btn" data-section="girls">Découvrir</a>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <div class="category-header">
+                        <h3>Vêtements Garçons</h3>
+                    </div>
+                    <div class="category-body">
+                        <p>T-shirts, pantalons, vestes</p>
+                        <a href="#" class="btn" data-section="boys">Découvrir</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Tous les produits -->
+    <section id="products" class="section">
+        <div class="container">
+            <h2 class="section-title">Nos Produits</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Découvrez notre collection de vêtements pour enfants.</p>
+            <div class="products-grid" id="products-container">
+                <!-- Les produits seront générés dynamiquement par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Filles -->
+    <section id="girls" class="section">
+        <div class="container">
+            <h2 class="section-title">Vêtements Filles</h2>
+            <div class="products-grid" id="girls-container">
+                <!-- Les produits pour filles seront générés dynamiquement par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Garçons -->
+    <section id="boys" class="section">
+        <div class="container">
+            <h2 class="section-title">Vêtements Garçons</h2>
+            <div class="products-grid" id="boys-container">
+                <!-- Les produits pour garçons seront générés dynamiquement par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contactez-nous</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Une question ? N'hésitez pas à nous contacter !</p>
+            
+            <div class="contact-section">
+                <div class="contact-info">
+                    <h3 style="margin-bottom: 20px;">Informations de contact</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">W</div>
+                        <div>
+                            <strong>WhatsApp</strong><br>
+                            +229 01 52 25 90 69
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">B</div>
+                        <div>
+                            <strong>Boutique</strong><br>
+                            Leaddy's Kids
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">H</div>
+                        <div>
+                            <strong>Horaires</strong><br>
+                            Lun - Sam : 8h - 18h
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Nom complet *</label>
+                        <input type="text" id="name" class="form-input" placeholder="Votre nom complet" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email *</label>
+                        <input type="email" id="email" class="form-input" placeholder="votre@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Téléphone</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="+229 33 30 00 00 00">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message *</label>
+                        <textarea id="message" class="form-textarea" placeholder="Votre message..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">Leaddy's Kids</div>
+            <div class="copyright">© 2023 Leaddy's Kids. Tous droits réservés.</div>
+        </div>
+    </footer>
+
+    <script>
+        // Données des produits
+        const products = [
+            {
+                id: 1,
+                title: "Robe Princesse Rose",
+                price: 15000,
+                age: "3-5 ans",
+                category: "Fille",
+                description: "Magnifique robe de princesse en tissu sain de haute qualité. Parfaite pour les occasions spéciales.",
+                image: "robe-princesse"
+            },
+            {
+                id: 2,
+                title: "Ensemble Garçon Chic",
+                price: 12000,
+                age: "4-10 ans",
+                category: "Garçon",
+                description: "Ensemble élégant composé d'une chemise et d'un pantalon. Idéal pour les événements formels.",
+                image: "ensemble-garcon"
+            },
+            {
+                id: 3,
+                title: "T-shirt Coloré Fille",
+                price: 8000,
+                age: "2-7 ans",
+                category: "Fille",
+                description: "T-shirt confortable en coton doux avec motifs colorés. Parfait pour le quotidien.",
+                image: "tshirt-fille"
+            },
+            {
+                id: 4,
+                title: "Short Garçon Sport",
+                price: 6500,
+                age: "5-8 ans",
+                category: "Garçon",
+                description: "Short de sport confortable et respirant. Idéal pour les activités physiques.",
+                image: "short-garcon"
+            },
+            {
+                id: 5,
+                title: "Robe Décontractée",
+                price: 10000,
+                age: "2-6 ans",
+                category: "Fille",
+                description: "Robe décontractée en tissu léger et confortable. Parfaite pour tous les jours.",
+                image: "robe-decontractee"
+            },
+            {
+                id: 6,
+                title: "Polo Garçon Classique",
+                price: 9000,
+                age: "4-12 ans",
+                category: "Garçon",
+                description: "Polo classique en coton piqué de qualité supérieure. Élégant et confortable.",
+                image: "polo-garcon"
+            },
+            {
+                id: 7,
+                title: "Jupe Fleurie",
+                price: 7500,
+                age: "3-6 ans",
+                category: "Fille",
+                description: "Jolie jupe fleurie avec élastique à la taille. Confortable et facile à porter.",
+                image: "jupe-fleurie"
+            },
+            {
+                id: 8,
+                title: "Pantalon Garçon",
+                price: 11000,
+                age: "5-10 ans",
+                category: "Garçon",
+                description: "Pantalon confortable en tissu résistant. Parfait pour l'école et le jeu.",
+                image: "pantalon-garcon"
+            },
+            {
+                id: 9,
+                title: "Ensemble Fille Élégant",
+                price: 13000,
+                age: "4-8 ans",
+                category: "Fille",
+                description: "Ensemble chic composé d'une robe et d'un cardigan. Idéal pour les occasions spéciales.",
+                image: "ensemble-fille"
+            },
+            {
+                id: 10,
+                title: "Chemise Garçon",
+                price: 9500,
+                age: "6-12 ans",
+                category: "Garçon",
+                description: "Chemise classique en coton. Élégante et confortable pour toutes les occasions.",
+                image: "chemise-garcon"
+            },
+            {
+                id: 11,
+                title: "Robe d'Été",
+                price: 8500,
+                age: "2-5 ans",
+                category: "Fille",
+                description: "Robe légère et colorée pour les journées ensoleillées. Confortable et stylée.",
+                image: "robe-ete"
+            },
+            {
+                id: 12,
+                title: "Sweat Garçon",
+                price: 12000,
+                age: "4-10 ans",
+                category: "Garçon",
+                description: "Sweat-shirt chaud et confortable avec capuche. Parfait pour les journées fraîches.",
+                image: "sweat-garcon"
+            },
+            // Nouveaux produits avec prix demandés
+            {
+                id: 13,
+                title: "Body Bébé Fille",
+                price: 2500,
+                age: "0-12 mois",
+                category: "Fille",
+                description: "Body confortable en coton doux pour bébé. Facile à enfiler et à laver.",
+                image: "body-fille"
+            },
+            {
+                id: 14,
+                title: "Pyjama Garçon",
+                price: 3000,
+                age: "2-6 ans",
+                category: "Garçon",
+                description: "Pyjama confortable avec motif amusant. Idéal pour les nuits douillettes.",
+                image: "pyjama-garcon"
+            },
+            {
+                id: 15,
+                title: "Chaussettes Fille",
+                price: 2000,
+                age: "1-5 ans",
+                category: "Fille",
+                description: "Lot de 3 paires de chaussettes colorées. Confortables et de qualité.",
+                image: "chaussettes-fille"
+            },
+            {
+                id: 16,
+                title: "Casquette Garçon",
+                price: 2500,
+                age: "3-8 ans",
+                category: "Garçon",
+                description: "Casquette ajustable pour protéger du soleil. Style sportif et moderne.",
+                image: "casquette-garcon"
+            },
+            {
+                id: 17,
+                title: "Collant Fille",
+                price: 3000,
+                age: "2-7 ans",
+                category: "Fille",
+                description: "Collant confortable et élastique. Parfait sous les jupes et robes.",
+                image: "collant-fille"
+            },
+            {
+                id: 18,
+                title: "Gilet Garçon",
+                price: 3500,
+                age: "4-10 ans",
+                category: "Garçon",
+                description: "Gilet chaud et léger. Idéal pour les journées fraîches.",
+                image: "gilet-garcon"
+            }
+        ];
+
+        // Fonction pour formater le prix en FCFA
+        function formatPrice(price) {
+            return price.toLocaleString('fr-FR') + ' FCFA';
+        }
+
+        // Fonction pour générer le HTML d'un produit
+        function createProductHTML(product) {
+            return `
+                <div class="product-card">
+                    <div class="product-image">
+                        ${product.image ? `<img src="${product.image}" alt="${product.title}" style="width:100%;height:100%;object-fit:cover;">` : product.title}
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">${product.title}</h3>
+                        <div class="product-price">${formatPrice(product.price)}</div>
+                        <div class="product-age">${product.age}</div>
+                        <div class="product-category">${product.category}</div>
+                        <p class="product-description">${product.description}</p>
+                        <button class="btn order-btn" data-product="${product.title}">Commander sur WhatsApp</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Fonction pour afficher les produits dans un conteneur
+        function displayProducts(containerId, filterCategory = null) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            
+            let filteredProducts = products;
+            if (filterCategory) {
+                filteredProducts = products.filter(product => product.category === filterCategory);
+            }
+            
+            filteredProducts.forEach(product => {
+                container.innerHTML += createProductHTML(product);
+            });
+            
+            // Ajouter les écouteurs d'événements pour les boutons de commande
+            document.querySelectorAll('.order-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const productName = this.getAttribute('data-product');
+                    const whatsappUrl = `https://wa.me/2290152259069?text=${encodeURIComponent(`Bonjour Leaddy's kids! Je suis intéressé par cet article : ${productName}`)}`;
+                    window.open(whatsappUrl, '_blank');
+                });
+            });
+        }
+
+        // Fonction pour changer de section
+        function showSection(sectionId) {
+            // Masquer toutes les sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active-section');
+            });
+            
+            // Afficher la section sélectionnée
+            document.getElementById(sectionId).classList.add('active-section');
+            
+            // Mettre à jour la navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            document.querySelector(`.nav-item[data-section="${sectionId}"]`).classList.add('active');
+            
+            // Faire défiler vers le haut de la section
+            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialisation du site
+        document.addEventListener('DOMContentLoaded', function() {
+            // Afficher les produits
+            displayProducts('products-container');
+            displayProducts('girls-container', 'Fille');
+            displayProducts('boys-container', 'Garçon');
+            
+            // Navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    showSection(sectionId);
+                });
+            });
+            
+            // Bouton "Voir nos produits"
+            document.getElementById('view-products').addEventListener('click', function(e) {
+                e.preventDefault();
+                showSection('products');
+            });
+            
+            // Boutons "Découvrir" dans les catégories
+            document.querySelectorAll('.category-card .btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const sectionId = this.getAttribute('data-section');
+                    showSection(sectionId);
+                });
+            });
+            
+            // Formulaire de contact
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const message = document.getElementById('message').value;
+                
+                // Envoyer l'email (simulé ici)
+                const mailtoLink = `mailto:lucdeguenon11@gmail.com?subject=Message de ${name}&body=Nom: ${name}%0D%0AEmail: ${email}%0D%0ATéléphone: ${phone}%0D%0AMessage: ${message}`;
+                window.location.href = mailtoLink;
+                
+                // Réinitialiser le formulaire
+                this.reset();
+                
+                // Afficher un message de confirmation
+                alert('Votre message a été envoyé avec succès !');
+            });
+            
+            // Afficher la section d'accueil par défaut
+            showSection('home');
+        });
+    </script>
+</body>
+</html>
